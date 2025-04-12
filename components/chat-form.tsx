@@ -4,11 +4,12 @@ import type React from "react"
 
 import { cn } from "@/lib/utils"
 import { useChat } from "ai/react"
-import { SendIcon, Zap } from "lucide-react"
+import { SendIcon, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip"
 import { AutoResizeTextarea } from "@/components/autoresize-textarea"
 import { useState, useEffect } from "react"
+import Link from "next/link"
 
 export function HelixChatForm({ className, ...props }: React.ComponentProps<"form">) {
   const { messages, input, setInput, append, isLoading } = useChat({
@@ -53,7 +54,7 @@ export function HelixChatForm({ className, ...props }: React.ComponentProps<"for
     <div className="flex h-full flex-col items-center justify-center gap-6 px-4">
       <div className="flex items-center gap-2">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600">
-          <Zap size={24} className="text-white" />
+          <Sparkles size={24} className="animate-pulse text-sky-100" />
         </div>
         <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
           HelixAI
@@ -129,11 +130,13 @@ export function HelixChatForm({ className, ...props }: React.ComponentProps<"for
         <div className="flex items-center justify-between border-b px-4 py-3">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-              <Zap size={16} className="text-white" />
+              <Sparkles size={16} className="animate-pulse text-sky-100" />
             </div>
             <h2 className="font-medium">HelixAI</h2>
           </div>
-          <div className="text-xs text-gray-500">by Dulran Hemjitha</div>
+          <div className="text-xs text-black">
+            <Link href={"https://dulran.dev/"}>by Dulran Hemjitha</Link>
+          </div>
         </div>
 
         <div className="flex-1 overflow-y-auto px-4">{messages.length ? messageList : introContent}</div>
